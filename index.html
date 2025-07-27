@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BXNNYBNNED</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet" />
   <style>
     * {
       margin: 0;
@@ -15,23 +15,61 @@
     html, body {
       min-height: 100vh;
       width: 100%;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Audiowide', sans-serif;
       background-image: url('https://media1.tenor.com/m/JEZyobNRvRYAAAAC/dandadan-dan-da-dan.gif');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      background-attachment: fixed;
-      transition: background-image 1s ease-in-out;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 10px;
       overflow-x: hidden;
+      transition: background 0.6s ease-in-out;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 999;
+    }
+
+    .theme-toggle input {
+      appearance: none;
+      width: 40px;
+      height: 20px;
+      background: #ff3c3c;
+      border-radius: 20px;
+      position: relative;
+      outline: none;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .theme-toggle input::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: white;
+      top: 1px;
+      left: 1px;
+      transition: 0.3s;
+    }
+
+    .theme-toggle input:checked {
+      background: #c99cff;
+    }
+
+    .theme-toggle input:checked::before {
+      transform: translateX(20px);
     }
 
     .window-form {
       width: 100%;
-      max-width: 1000px;
+      max-width: 900px;
       background-color: rgba(0, 0, 0, 0.85);
       border-radius: 16px;
       box-shadow: 0 0 40px rgba(255, 0, 0, 0.5);
@@ -39,6 +77,7 @@
       backdrop-filter: blur(5px);
       text-align: center;
       margin: 20px auto;
+      transition: all 0.4s ease-in-out;
     }
 
     h1 {
@@ -57,15 +96,12 @@
     .table-container {
       width: 100%;
       overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
-      min-width: 650px;
-      max-width: 100%;
-      border-collapse: collapse;
       table-layout: fixed;
+      border-collapse: collapse;
       background-color: rgba(10, 10, 10, 0.55);
       backdrop-filter: blur(4px);
       box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
@@ -83,35 +119,40 @@
       word-wrap: break-word;
     }
 
+    th:first-child,
+    td:first-child {
+      white-space: nowrap;
+      width: auto;
+    }
+
+    th:not(:first-child),
+    td:not(:first-child) {
+      width: 14.28%;
+    }
+
+    td:empty {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
     th {
       background-color: rgba(30, 0, 0, 0.8);
       color: #ff3c3c;
       text-shadow: 0 0 5px #ff3c3c;
     }
 
-    td[rowspan] {
-      font-weight: bold;
-      color: #000;
-    }
-
     .edoop { background-color: #7fdfff; }
-    .pmt { background-color: #ff7eb3; }
-    .net2 { background-color: #a4fcbf; }
-    .db2 { background-color: #ffd47f; }
-    .sad { background-color: #b28dff; }
-    .ms { background-color: #ffae7f; }
-    .web { background-color: #7fffff; }
+    .pmt   { background-color: #ff7eb3; }
+    .net2  { background-color: #a4fcbf; }
+    .db2   { background-color: #ffd47f; }
+    .sad   { background-color: #b28dff; }
+    .ms    { background-color: #ffae7f; }
+    .web   { background-color: #7fffff; }
 
     .quote {
       margin-top: 10px;
       font-size: 0.9rem;
       color: #ff7b7b;
       text-shadow: 0 0 5px red;
-      transition: opacity 0.5s ease;
-    }
-
-    .hidden {
-      opacity: 0;
     }
 
     .footer {
@@ -121,198 +162,128 @@
       text-shadow: 0 0 3px #ff3c3c;
     }
 
+    .subject-cell {
+      transition: all 0.4s ease-in-out;
+      cursor: pointer;
+    }
+
+    .subject-cell.active {
+      box-shadow: 0 0 20px 5px #ff3c3c, 0 0 10px #ff3c3c;
+      transform: scale(1.08);
+      z-index: 1;
+      position: relative;
+      border-radius: 12px;
+    }
+
+    body.light h1 {
+      color: #c99cff;
+      text-shadow: 0 0 5px #c99cff, 0 0 10px #c99cff;
+    }
+
+    body.light p {
+      color: #d6a6ff;
+      text-shadow: 0 0 4px #d6a6ff, 0 0 10px #d6a6ff;
+    }
+
+    body.light table {
+      border-color: #c99cff;
+      box-shadow: 0 0 20px rgba(202, 153, 255, 0.3);
+    }
+
+    body.light th,
+    body.light td {
+      border-color: #c99cff;
+    }
+
+    body.light .window-form {
+      box-shadow: 0 0 40px rgba(201, 153, 255, 0.5);
+    }
+
+    body.light th {
+      background-color: rgba(30, 0, 30, 0.8);
+      color: #c99cff;
+      text-shadow: 0 0 5px #c99cff;
+    }
+
+    body.light .footer {
+      color: #c99cff;
+      text-shadow: 0 0 3px #c99cff;
+    }
+
+    body.light .quote {
+      color: #c99cff;
+      text-shadow: 0 0 5px #d9bfff;
+    }
+
+    body.light .subject-cell.active {
+      box-shadow: 0 0 20px 5px #c99cff, 0 0 10px #c99cff;
+    }
+
     @media (max-width: 768px) {
-      h1 {
-        font-size: 1.5rem;
+      h1 { font-size: 1.5rem; }
+      p, .quote { font-size: 0.85rem; }
+      th, td { font-size: 11px; padding: 8px; }
+      .theme-toggle input {
+        width: 30px;
+        height: 16px;
       }
-
-      p, .quote {
-        font-size: 0.85rem;
-      }
-
-      th, td {
-        font-size: 11px;
-        padding: 8px;
-      }
-
-      .window-form {
-        padding: 15px 10px;
-        margin: 10px;
+      .theme-toggle input::before {
+        width: 14px;
+        height: 14px;
       }
     }
 
     @media (max-width: 480px) {
-      h1 {
-        font-size: 1.3rem;
-      }
-
-      p {
-        font-size: 0.75rem;
-      }
-
-      th, td {
-        font-size: 10px;
-      }
-
-      .footer {
-        font-size: 0.65rem;
-      }
+      h1 { font-size: 1.3rem; }
+      p { font-size: 0.75rem; }
+      th, td { font-size: 10px; }
+      .footer { font-size: 0.65rem; }
     }
   </style>
 </head>
 <body>
+  <div class="theme-toggle">
+    <input type="checkbox" id="themeSwitch" />
+  </div>
+
   <div class="window-form">
     <h1>BXNNYBNNED</h1>
     <p>• WELCOME TO MY DOMAIN •</p>
 
     <div class="table-container">
       <table>
-        <tr>
-          <th>Time</th>
-          <th>Mon</th>
-          <th>Tue</th>
-          <th>Wed</th>
-          <th>Thu</th>
-          <th>Fri</th>
-          <th>Sat</th>
-        </tr>
-        <tr>
-          <td>7:30</td>
-          <td></td>
-          <td class="pmt" rowspan="6">GEE-PMT<br>Rm 301</td>
-          <td></td>
-          <td class="edoop" rowspan="6">ITE-EDOOP Lab<br>CL1</td>
-          <td></td>
-          <td class="db2" rowspan="6">IT31-DB2 Lab<br>CL2</td>
-        </tr>
-        <tr>
-          <td>8:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>8:30</td>
-          <td class="edoop" rowspan="3">ITE-EDOOP Lec<br>Rm 303</td>
-          <td></td>
-          <td class="sad" rowspan="6">IT-SAD Lec<br>Rm 303</td>
-        </tr>
-        <tr>
-          <td>9:00</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>9:30</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>10:00</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>10:30</td>
-          <td></td>
-          <td class="net2" rowspan="6">IT31-Net2 Lab<br>CL4</td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>11:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>11:30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>12:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>12:30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td class="ms" rowspan="3">ITE-MS Lec<br>Rm 301</td>
-          <td class="web" rowspan="3">IT31-Web Lec<br>Rm 304</td>
-        </tr>
-        <tr>
-          <td>1:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>1:30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>2:00</td>
-          <td></td>
-          <td class="net2" rowspan="3">IT31-Net2 Lec<br>Rm 301</td>
-          <td></td>
-          <td></td>
-          <td class="ms" rowspan="6">ITE-MS Lab<br>CL1</td>
-          <td class="web" rowspan="6">IT31-Web Lab<br>CL1</td>
-        </tr>
-        <tr>
-          <td>2:30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>3:00</td>
-          <td></td>
-          <td class="db2" rowspan="3">IT31-DB2 Lec<br>Online</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>3:30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>4:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>4:30</td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td>5:00</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Time</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>7:30</td><td></td><td class="pmt" rowspan="6">GEE-PMT<br>Rm 301</td><td></td><td class="edoop" rowspan="6">ITE-EDOOP Lab<br>CL1</td><td></td><td class="db2" rowspan="6">IT31-DB2 Lab<br>CL2</td></tr>
+          <tr><td>8:00</td><td></td><td></td><td></td></tr>
+          <tr><td>8:30</td><td class="edoop" rowspan="3">ITE-EDOOP Lec<br>Rm 303</td><td></td><td class="sad" rowspan="6">IT-SAD Lec<br>Rm 303</td></tr>
+          <tr><td>9:00</td><td></td></tr>
+          <tr><td>9:30</td><td></td></tr>
+          <tr><td>10:00</td><td></td><td></td></tr>
+          <tr><td>10:30</td><td></td><td class="net2" rowspan="6">IT31-Net2 Lab<br>CL4</td><td></td><td></td></tr>
+          <tr><td>11:00</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>11:30</td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>12:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>12:30</td><td></td><td></td><td></td><td class="ms" rowspan="3">ITE-MS Lec<br>Rm 301</td><td class="web" rowspan="3">IT31-Web Lec<br>Rm 304</td></tr>
+          <tr><td>1:00</td><td></td><td></td><td></td></tr>
+          <tr><td>1:30</td><td></td><td></td><td></td><td></td></tr>
+          <tr><td>2:00</td><td></td><td class="net2" rowspan="3">IT31-Net2 Lec<br>Rm 301</td><td></td><td></td><td class="ms" rowspan="6">ITE-MS Lab<br>CL1</td><td class="web" rowspan="6">IT31-Web Lab<br>CL1</td></tr>
+          <tr><td>2:30</td><td></td><td></td><td></td></tr>
+          <tr><td>3:00</td><td></td><td class="db2" rowspan="3">IT31-DB2 Lec<br>Online</td><td></td></tr>
+          <tr><td>3:30</td><td></td><td></td><td></td></tr>
+          <tr><td>4:00</td><td></td><td></td><td></td></tr>
+          <tr><td>4:30</td><td></td><td></td><td></td></tr>
+          <tr><td>5:00</td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
       </table>
     </div>
 
     <div class="quote" id="quote">Loading DanDaDan energy...</div>
-    <div class="footer">© BXNNYBNNED 2025 — All rights reserved. Unauthorized duplication is a violation of applicable laws.</div>
+    <div class="footer">© BXNNYBANNED 2025 — All rights reserved. Unauthorized duplication is a violation of applicable laws.</div>
   </div>
 
   <script>
@@ -334,11 +305,25 @@
         currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
         quoteEl.textContent = quotes[currentQuoteIndex];
         quoteEl.classList.remove("hidden");
-      }, 1000);
+      }, 500);
     }
 
     setInterval(changeQuote, 3000);
+
+    const subjectCells = document.querySelectorAll('.pmt, .edoop, .net2, .db2, .sad, .ms, .web');
+    subjectCells.forEach(cell => {
+      cell.classList.add("subject-cell");
+      cell.addEventListener('click', () => {
+        subjectCells.forEach(c => c.classList.remove('active'));
+        void cell.offsetWidth;
+        cell.classList.add('active');
+      });
+    });
+
+    document.getElementById("themeSwitch").addEventListener("change", function () {
+      document.body.classList.toggle("light", this.checked);
+    });
   </script>
 </body>
-</html>
-            
+  </html>
+                        
