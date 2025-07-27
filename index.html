@@ -13,21 +13,24 @@
     }
 
     html, body {
-      height: 100%;
+      min-height: 100vh;
       width: 100%;
       font-family: 'Orbitron', sans-serif;
-      background-image: url('https://images5.alphacoders.com/138/thumb-1920-1386972.webp');
+      background-image: url('https://media1.tenor.com/m/JEZyobNRvRYAAAAC/dandadan-dan-da-dan.gif');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      background-attachment: fixed;
       transition: background-image 1s ease-in-out;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 10px;
+      overflow-x: hidden;
     }
 
     .window-form {
-      width: 90%;
+      width: 100%;
       max-width: 1000px;
       background-color: rgba(0, 0, 0, 0.85);
       border-radius: 16px;
@@ -35,7 +38,7 @@
       padding: 20px;
       backdrop-filter: blur(5px);
       text-align: center;
-      margin: 40px; /* add margin to avoid edge stretching */
+      margin: 20px auto;
     }
 
     h1 {
@@ -51,8 +54,16 @@
       margin-bottom: 20px;
     }
 
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
     table {
       width: 100%;
+      min-width: 650px;
+      max-width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
       background-color: rgba(10, 10, 10, 0.55);
@@ -69,6 +80,7 @@
       font-size: 13px;
       color: #ffffff;
       height: 30px;
+      word-wrap: break-word;
     }
 
     th {
@@ -108,156 +120,196 @@
       color: #ff3c3c;
       text-shadow: 0 0 3px #ff3c3c;
     }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      p, .quote {
+        font-size: 0.85rem;
+      }
+
+      th, td {
+        font-size: 11px;
+        padding: 8px;
+      }
+
+      .window-form {
+        padding: 15px 10px;
+        margin: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.3rem;
+      }
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      th, td {
+        font-size: 10px;
+      }
+
+      .footer {
+        font-size: 0.65rem;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="window-form">
     <h1>BXNNYBNNED</h1>
-    <p>A FXCKING SCHEDULE</p>
+    <p>• WELCOME TO MY DOMAIN •</p>
 
-    <table>
-      <tr>
-        <th>Time</th>
-        <th>Mon</th>
-        <th>Tue</th>
-        <th>Wed</th>
-        <th>Thu</th>
-        <th>Fri</th>
-        <th>Sat</th>
-      </tr>
-      <tr>
-        <td>7:30</td>
-        <td></td>
-        <td class="pmt" rowspan="6">GEE-PMT<br>Rm 301</td>
-        <td></td>
-        <td class="edoop" rowspan="6">ITE-EDOOP Lab<br>CL1</td>
-        <td></td>
-        <td class="db2" rowspan="6">IT31-DB2 Lab<br>CL2</td>
-      </tr>
-      <tr>
-        <td>8:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>8:30</td>
-        <td class="edoop" rowspan="3">ITE-EDOOP Lec<br>Rm 303</td>
-        <td></td>
-        <td class="sad" rowspan="6">IT-SAD Lec<br>Rm 303</td>
-      </tr>
-      <tr>
-        <td>9:00</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>9:30</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>10:00</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>10:30</td>
-        <td></td>
-        <td class="net2" rowspan="6">IT31-Net2 Lab<br>CL4</td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>11:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>11:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>12:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>12:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td class="ms" rowspan="3">ITE-MS Lec<br>Rm 301</td>
-        <td class="web" rowspan="3">IT31-Web Lec<br>Rm 304</td>
-      </tr>
-      <tr>
-        <td>1:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>1:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>2:00</td>
-        <td></td>
-        <td class="net2" rowspan="3">IT31-Net2 Lec<br>Rm 301</td>
-        <td></td>
-        <td></td>
-        <td class="ms" rowspan="6">ITE-MS Lab<br>CL1</td>
-        <td class="web" rowspan="6">IT31-Web Lab<br>CL1</td>
-      </tr>
-      <tr>
-        <td>2:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>3:00</td>
-        <td></td>
-        <td class="db2" rowspan="3">IT31-DB2 Lec<br>Online</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>3:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>4:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>4:30</td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>5:00</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
+    <div class="table-container">
+      <table>
+        <tr>
+          <th>Time</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+        <tr>
+          <td>7:30</td>
+          <td></td>
+          <td class="pmt" rowspan="6">GEE-PMT<br>Rm 301</td>
+          <td></td>
+          <td class="edoop" rowspan="6">ITE-EDOOP Lab<br>CL1</td>
+          <td></td>
+          <td class="db2" rowspan="6">IT31-DB2 Lab<br>CL2</td>
+        </tr>
+        <tr>
+          <td>8:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>8:30</td>
+          <td class="edoop" rowspan="3">ITE-EDOOP Lec<br>Rm 303</td>
+          <td></td>
+          <td class="sad" rowspan="6">IT-SAD Lec<br>Rm 303</td>
+        </tr>
+        <tr>
+          <td>9:00</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>9:30</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>10:00</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>10:30</td>
+          <td></td>
+          <td class="net2" rowspan="6">IT31-Net2 Lab<br>CL4</td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>11:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>11:30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>12:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>12:30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="ms" rowspan="3">ITE-MS Lec<br>Rm 301</td>
+          <td class="web" rowspan="3">IT31-Web Lec<br>Rm 304</td>
+        </tr>
+        <tr>
+          <td>1:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>1:30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>2:00</td>
+          <td></td>
+          <td class="net2" rowspan="3">IT31-Net2 Lec<br>Rm 301</td>
+          <td></td>
+          <td></td>
+          <td class="ms" rowspan="6">ITE-MS Lab<br>CL1</td>
+          <td class="web" rowspan="6">IT31-Web Lab<br>CL1</td>
+        </tr>
+        <tr>
+          <td>2:30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3:00</td>
+          <td></td>
+          <td class="db2" rowspan="3">IT31-DB2 Lec<br>Online</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3:30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4:30</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>5:00</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
 
     <div class="quote" id="quote">Loading DanDaDan energy...</div>
     <div class="footer">© BXNNYBNNED 2025 — All rights reserved. Unauthorized duplication is a violation of applicable laws.</div>
@@ -289,3 +341,4 @@
   </script>
 </body>
 </html>
+            
