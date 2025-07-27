@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Feedback Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color: #fff7f0;
+      color: #2e2e2e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 16px;
+      max-width: 460px;
+      width: 100%;
+      box-shadow: 0 10px 20px rgba(255, 170, 170, 0.2);
+      border: 2px solid #ffe0d2;
+    }
+
+    h1 {
+      font-family: 'Georgia', serif;
+      font-size: 3rem;
+      color: #ff6b6b;
+      margin-bottom: 20px;
+      text-align: center;
+      border-bottom: 2px dashed #ffc9b9;
+      padding-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 18px;
+      border: 1.5px solid #ffcab0;
+      border-radius: 8px;
+      background-color: #fffaf8;
+      font-size: 15px;
+      color: #333;
+      transition: 0.2s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #9be7c4;
+      background-color: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      margin-top: 10px;
+      color: #444;
+    }
+
+    input[type="radio"] {
+      margin-right: 6px;
+    }
+
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background-color: #ff6f61; 
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #48b79a;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <h1>Student Feedback Form</h1>
+
+    <input type="text" placeholder="Enter your name" required>
+    <input type="email" placeholder="Enter your email" required>
+
+    <select required>
+      <option disabled selected>Select a subject</option>
+      <option>Math</option>
+      <option>Science</option>
+      <option>English</option>
+      <option>History</option>
+    </select>
+
+    <textarea placeholder="Write your feedback here..." rows="5" required></textarea>
+
+    <label><b>Satisfaction Level:</b></label>
+    <label><input type="radio" name="satisfaction" value="excellent"> Excellent</label>
+    <label><input type="radio" name="satisfaction" value="good"> Good</label>
+    <label><input type="radio" name="satisfaction" value="fair"> Fair</label>
+    <label><input type="radio" name="satisfaction" value="poor"> Poor</label>
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+</body>
+</html>
